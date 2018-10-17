@@ -1,0 +1,12 @@
+.Header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: cadetblue;
+    height: 50px;
+}
+
+.Header .Title {
+    max-width: 50%;
+    color: white;
+}

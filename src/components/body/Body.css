@@ -1,0 +1,18 @@
+.Body {
+    height: 800px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.Body .Input {
+    background-color: #ff9e2c;
+    padding: 1rem;
+    flex: 1;
+}
+
+.Body .Output {
+    background-color: #b6701e;
+    padding: 1rem;
+    flex: 1;
+}
