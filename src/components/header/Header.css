@@ -3,10 +3,14 @@
     align-items: center;
     justify-content: center;
     background-color: cadetblue;
-    height: 50px;
+    height: 60px;
 }
 
 .Header .Title {
     max-width: 50%;
     color: white;
+}
+
+.logo {
+    height: 60px;
 }

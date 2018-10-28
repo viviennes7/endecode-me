@@ -1,0 +1,16 @@
+.input-wrapper {
+    height: 100%;
+}
+
+.input-value {
+    height: 50%;
+    width: 100%;
+}
+
+.button-wrapper {
+    float: right;
+}
+
+.input-button {
+    width: 130px;
+}
