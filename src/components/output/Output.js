@@ -1,18 +1,19 @@
 import React, {Component} from 'react';
 import './Output.css';
+import base64 from 'base64-utf8'
 import md5 from 'md5/md5';
 import sha256 from 'sha256'
 import SHA512 from 'js-sha512';
 
 const ENCODING_STRATEGY = {
-    Base64: (value) => btoa(value),
+    Base64: (value) => base64.encode(value),
     URL: (value) => encodeURIComponent(value),
     MD5: (value) => md5(value),
     SHA256: (value) => sha256(value),
     SHA512: (value) => SHA512.sha512(value),
 };
 const DECODING_STRATEGY = {
-    Base64: (value) => atob(value),
+    Base64: (value) => base64.decode(value),
     URL: (value) => decodeURIComponent(value),
     MD5: () => 'Not Support',
     SHA256: () => 'Not Support',
