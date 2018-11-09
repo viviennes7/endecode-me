@@ -7,7 +7,7 @@ export default class Header extends Component {
         return (
             <div className="Header">
                 <img className="logo" src={logo}/>
-                <h2 className="Title">endeCode Me!</h2>
+                <h2 className="Title">endeCode Me</h2>
             </div>
         );
     }

@@ -19,7 +19,7 @@ export default class Body extends Component {
 
         this.setInputValue = this.setInputValue.bind(this);
         this.onClickButton = this.onClickButton.bind(this);
-        this.output = [];
+        this.output = {};
     }
 
     onClickButton(convertType) {
@@ -52,6 +52,7 @@ export default class Body extends Component {
                            decodeButtonTitle={this.state.decodeButton}/>
                 </div>
                 <div className='Output'>
+                    <div className='output-space'></div>
                     {
                         ALGORITHMS.map((algorithm, i) =>
                             <Output inputValue={this.state.inputValue}
