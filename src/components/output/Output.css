@@ -3,7 +3,6 @@
 }
 
 .output-value {
-    height: 10%;
-    width: 100%;
+    background-color: white !important;
 }
 

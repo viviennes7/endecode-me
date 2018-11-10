@@ -25,10 +25,10 @@ export default class Input extends Component {
             <div className='input-wrapper'>
                 <div className='button-wrapper'>
                     <Button variant="dark" className='input-button' onClick={this.onEncodeClick}>
-                        {this.props.encodeButtonTitle}
+                        Encode
                     </Button>
                     <Button variant="dark" className='input-button' onClick={this.onDecodeClick}>
-                        {this.props.decodeButtonTitle}
+                        Decode
                     </Button>
                 </div>
                 <InputGroup>

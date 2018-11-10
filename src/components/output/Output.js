@@ -29,9 +29,7 @@ export default class Output extends Component {
         super(props);
         this.outputValue = {};
         this.outputValue[this.props.name] = React.createRef();
-        this.state = {
-            result: ''
-        };
+        this.state = {result: ''};
 
         this.copyToClipboard = this.copyToClipboard.bind(this);
     }
@@ -42,10 +40,6 @@ export default class Output extends Component {
 
     componentWillUnmount() {
         this.props.onRef(undefined);
-    }
-
-    componentDidUpdate() {
-        ReactTooltip.rebuild();
     }
 
     convertValue(convertType) {
@@ -77,7 +71,7 @@ export default class Output extends Component {
     }
 
     copyToClipboard(event) {
-        if(event.target.value) {
+        if (event.target.value) {
             event.currentTarget.select();
             document.execCommand("copy");
             this.showTooltip();
@@ -87,9 +81,6 @@ export default class Output extends Component {
     showTooltip() {
         let tooltip = this.outputValue[this.props.name].current;
         ReactTooltip.show(tooltip);
-        setTimeout(() => {
-            ReactTooltip.hide(tooltip);
-        }, 800);
     }
 
     render() {
@@ -101,14 +92,17 @@ export default class Output extends Component {
                                  className='output-value'
                                  value={this.state.result}
                                  onClick={this.copyToClipboard}
+                                 readOnly={true}
                                  data-tip="Copied"
-                                 data-event='{click}'
+                                 data-event='{click focus}'
                                  as="textarea">
                     </FormControl>
                 </InputGroup>
                 <ReactTooltip place="bottom"
+                              globalEventOff='click'
                               type="dark"
-                              effect="float"/>
+                              delayHide={1000}
+                              effect='float'/>
             </div>
 
         )

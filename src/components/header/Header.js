@@ -6,7 +6,7 @@ export default class Header extends Component {
     render() {
         return (
             <div className="Header">
-                <img className="logo" src={logo}/>
+                <img className="logo" src={logo} alt='endecode Me'/>
                 <h2 className="Title">endeCode Me</h2>
             </div>
         );

@@ -3,8 +3,6 @@ import './Body.css'
 import Input from "../input/Input";
 import Output from "../output/Output";
 
-const ENCODE_BUTTON_TITLE = ['Paste and Encode', 'Encode'];
-const DECODE_BUTTON_TITLE = ['Paste and Decode', 'Decode'];
 const ALGORITHMS = ['Base64', 'URL', 'MD5', 'SHA256', 'SHA512'];
 
 export default class Body extends Component {
@@ -12,8 +10,6 @@ export default class Body extends Component {
         super(props);
 
         this.state = {
-            encodeButton: ENCODE_BUTTON_TITLE[0],
-            decodeButton: DECODE_BUTTON_TITLE[0],
             inputValue: ''
         };
 
@@ -31,15 +27,6 @@ export default class Body extends Component {
     setInputValue(event) {
         let inputValue = event.target.value;
         this.setState({inputValue: inputValue});
-        this.changeButtonTitle(inputValue);
-    }
-
-    changeButtonTitle(inputValue) {
-        if (inputValue === '') {
-            this.setState({encodeButton: ENCODE_BUTTON_TITLE[0], decodeButton: DECODE_BUTTON_TITLE[0]});
-        } else {
-            this.setState({encodeButton: ENCODE_BUTTON_TITLE[1], decodeButton: DECODE_BUTTON_TITLE[1]});
-        }
     }
 
     render() {
@@ -47,9 +34,7 @@ export default class Body extends Component {
             <div className='Body'>
                 <div className='Input'>
                     <Input setInputValue={this.setInputValue}
-                           onClickButton={this.onClickButton}
-                           encodeButtonTitle={this.state.encodeButton}
-                           decodeButtonTitle={this.state.decodeButton}/>
+                           onClickButton={this.onClickButton}/>
                 </div>
                 <div className='Output'>
                     <div className='output-space'></div>
