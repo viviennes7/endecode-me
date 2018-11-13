@@ -7,18 +7,15 @@ import FormControl from 'react-bootstrap/lib/FormControl';
 export default class Input extends Component {
     constructor(props) {
         super(props);
-
-        this.onEncodeClick = this.onEncodeClick.bind(this);
-        this.onDecodeClick = this.onDecodeClick.bind(this);
     }
 
-    onEncodeClick() {
+    onEncodeClick = () => {
         this.props.onClickButton('encode');
-    }
+    };
 
-    onDecodeClick() {
+    onDecodeClick = () => {
         this.props.onClickButton('decode');
-    }
+    };
 
     render() {
         return (

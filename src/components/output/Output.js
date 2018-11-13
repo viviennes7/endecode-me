@@ -11,8 +11,6 @@ export default class Output extends Component {
         this.outputValue = {};
         this.outputValue[this.props.name] = React.createRef();
         this.state = {result: ''};
-
-        this.copyToClipboard = this.copyToClipboard.bind(this);
     }
 
     componentDidMount() {
@@ -51,14 +49,14 @@ export default class Output extends Component {
         return result;
     }
 
-    copyToClipboard(event) {
+    copyToClipboard = (event) => {
         let value = event.target.value;
         if (value && value!== NOT_SUPPORT) {
             event.currentTarget.select();
             document.execCommand("copy");
             this.showTooltip();
         }
-    }
+    };
 
     showTooltip() {
         let tooltip = this.outputValue[this.props.name].current;

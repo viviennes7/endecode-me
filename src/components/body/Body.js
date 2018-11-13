@@ -9,25 +9,20 @@ export default class Body extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            inputValue: ''
-        };
-
-        this.setInputValue = this.setInputValue.bind(this);
-        this.onClickButton = this.onClickButton.bind(this);
+        this.state = {inputValue: ''};
         this.output = {};
     }
 
-    onClickButton(convertType) {
+    onClickButton = (convertType) => {
         ALGORITHMS.forEach(algorithm =>
             this.output[algorithm].convertValue(convertType)
         );
-    }
+    };
 
-    setInputValue(event) {
+    setInputValue = (event) => {
         let inputValue = event.target.value;
         this.setState({inputValue});
-    }
+    };
 
     render() {
         return (
