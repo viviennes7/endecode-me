@@ -28,7 +28,7 @@ export default class Output extends Component {
         let result = convertType === 'encode' ?
             this.encode(input) : this.decode(input);
 
-        this.setState({result: result});
+        this.setState({result});
     }
 
     encode(input) {

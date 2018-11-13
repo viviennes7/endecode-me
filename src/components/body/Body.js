@@ -26,7 +26,7 @@ export default class Body extends Component {
 
     setInputValue(event) {
         let inputValue = event.target.value;
-        this.setState({inputValue: inputValue});
+        this.setState({inputValue});
     }
 
     render() {
@@ -37,13 +37,13 @@ export default class Body extends Component {
                            onClickButton={this.onClickButton}/>
                 </div>
                 <div className='Output'>
-                    <div className='output-space'></div>
+                    <div className='output-space'/>
                     {
-                        ALGORITHMS.map((algorithm, i) =>
+                        ALGORITHMS.map((algorithm) =>
                             <Output inputValue={this.state.inputValue}
                                     onRef={ref => (this.output[algorithm] = ref)}
                                     name={algorithm}
-                                    key={i}/>
+                                    key={algorithm}/>
                         )
                     }
                 </div>
