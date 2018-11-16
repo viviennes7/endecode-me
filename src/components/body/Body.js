@@ -9,25 +9,20 @@ export default class Body extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            inputValue: ''
-        };
-
-        this.setInputValue = this.setInputValue.bind(this);
-        this.onClickButton = this.onClickButton.bind(this);
+        this.state = {inputValue: ''};
         this.output = {};
     }
 
-    onClickButton(convertType) {
+    onClickButton = (convertType) => {
         ALGORITHMS.forEach(algorithm =>
             this.output[algorithm].convertValue(convertType)
         );
-    }
+    };
 
-    setInputValue(event) {
+    setInputValue = (event) => {
         let inputValue = event.target.value;
-        this.setState({inputValue: inputValue});
-    }
+        this.setState({inputValue});
+    };
 
     render() {
         return (
@@ -37,13 +32,13 @@ export default class Body extends Component {
                            onClickButton={this.onClickButton}/>
                 </div>
                 <div className='Output'>
-                    <div className='output-space'></div>
+                    <div className='output-space'/>
                     {
-                        ALGORITHMS.map((algorithm, i) =>
+                        ALGORITHMS.map((algorithm) =>
                             <Output inputValue={this.state.inputValue}
                                     onRef={ref => (this.output[algorithm] = ref)}
                                     name={algorithm}
-                                    key={i}/>
+                                    key={algorithm}/>
                         )
                     }
                 </div>

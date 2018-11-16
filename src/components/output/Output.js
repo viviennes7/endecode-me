@@ -1,28 +1,9 @@
 import React, {Component} from 'react';
 import './Output.css';
-import base64 from 'base64-utf8'
-import md5 from 'md5/md5';
-import sha256 from 'sha256'
-import SHA512 from 'js-sha512';
 import InputGroup from 'react-bootstrap/lib/InputGroup';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import ReactTooltip from 'react-tooltip'
-
-const NOT_SUPPROPT = 'Not Support';
-const ENCODING_STRATEGY = {
-    Base64: (value) => base64.encode(value),
-    URL: (value) => encodeURIComponent(value),
-    MD5: (value) => md5(value),
-    SHA256: (value) => sha256(value),
-    SHA512: (value) => SHA512.sha512(value),
-};
-const DECODING_STRATEGY = {
-    Base64: (value) => base64.decode(value),
-    URL: (value) => decodeURIComponent(value),
-    MD5: () => NOT_SUPPROPT,
-    SHA256: () => NOT_SUPPROPT,
-    SHA512: () => NOT_SUPPROPT
-};
+import {ENCODING_STRATEGY, DECODING_STRATEGY, NOT_SUPPORT} from "./ConvertStrategy";
 
 export default class Output extends Component {
     constructor(props) {
@@ -30,8 +11,6 @@ export default class Output extends Component {
         this.outputValue = {};
         this.outputValue[this.props.name] = React.createRef();
         this.state = {result: ''};
-
-        this.copyToClipboard = this.copyToClipboard.bind(this);
     }
 
     componentDidMount() {
@@ -47,7 +26,7 @@ export default class Output extends Component {
         let result = convertType === 'encode' ?
             this.encode(input) : this.decode(input);
 
-        this.setState({result: result});
+        this.setState({result});
     }
 
     encode(input) {
@@ -55,7 +34,7 @@ export default class Output extends Component {
         try {
             result = ENCODING_STRATEGY[this.props.name](input);
         } catch (e) {
-            result = NOT_SUPPROPT;
+            result = NOT_SUPPORT;
         }
         return result;
     }
@@ -65,18 +44,19 @@ export default class Output extends Component {
         try {
             result = DECODING_STRATEGY[this.props.name](input);
         } catch (e) {
-            result = NOT_SUPPROPT;
+            result = NOT_SUPPORT;
         }
         return result;
     }
 
-    copyToClipboard(event) {
-        if (event.target.value) {
+    copyToClipboard = (event) => {
+        let value = event.target.value;
+        if (value && value!== NOT_SUPPORT) {
             event.currentTarget.select();
             document.execCommand("copy");
             this.showTooltip();
         }
-    }
+    };
 
     showTooltip() {
         let tooltip = this.outputValue[this.props.name].current;
